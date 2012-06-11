@@ -1,4 +1,8 @@
 raven-sanitize-openerp
 ======================
 
-Sanitize data for sentry from OpenERP stacktraces
+Sanitize[1] data for sentry from OpenERP stacktraces.
+
+
+[1] http://raven.readthedocs.org/en/latest/config/index.html#processors
+
