@@ -16,7 +16,7 @@ install_requires = [
 
 setup(
     name='raven-sanitize-openerp',
-    version='0.1.1-dev',
+    version='0.1.1',
     author='GISCE-TI, SL',
     author_email='devel@gisce.net',
     url='http://code.gisce.net/raven-sanitize-openerp',
