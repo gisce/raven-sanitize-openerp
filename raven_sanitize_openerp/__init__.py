@@ -33,7 +33,7 @@ class OpenerpPasswordsProcessor(Processor):
         for frame in data['frames']:
             if 'vars' not in frame:
                 continue
-            self_obj = frame['vars']['self'].split(' ')[0][1:]
+            self_obj = frame['vars'].get('self', '').split(' ')[0][1:]
             if (self_obj in ('netsvc.SimpleXMLRPCRequestHandler',
                              'netsvc.SecureXMLRPCRequestHandler',
                              'netsvc.LocalService')
