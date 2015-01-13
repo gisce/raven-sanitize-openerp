@@ -5,6 +5,8 @@
 Based on raven.core.processors.SanitizePasswordsProcessor
 """
 
+import re
+
 from raven.processors import Processor
 from raven.utils import varmap
 
@@ -15,6 +17,7 @@ class OpenerpPasswordsProcessor(Processor):
     and basic extra data.
     """
     MASK = '*' * 16
+    RE_PASS = re.compile('( password=)\S+')
 
     def sanitize(self, key, value):
         if not key:  # key can be a NoneType
@@ -24,6 +27,9 @@ class OpenerpPasswordsProcessor(Processor):
         if 'password' in key or 'passwd' in key or 'secret' in key:
             # store mask as a fixed length for security
             return self.MASK
+
+        if isinstance(value, basestring):
+            return self.RE_PASS.sub('\g<1>%s' % self.MASK, value)
 
         return value
 
